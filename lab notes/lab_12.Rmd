@@ -1,0 +1,50 @@
+---
+title: "Regression!"
+author: "Kyle Payne"
+date: "December 9, 2015"
+output: word_document
+---
+# 1.
+## a. Fit the simple linear regression of colonies on dose, and produce the usual R diagnostic plots.
+## b. Using the plots, comment on (i) any evidence of lack of fit and (ii) any evidence of heteroscedasticity.
+## c. Now fit the simple linear regression of colonies on log(dose+1), and produce the usual R diagnostic plots.
+## d. Produce a summary of the regression results.
+## e. Produce an ANOVA table of the regression results.
+The following R code may be helpful:
+```{r}
+library(faraway)
+data(salmonella)
+
+mod <- lm(colonies~dose,data=salmonella)
+par(mfrow=c(2,2))
+plot(mod)
+par(mfrow=c(1,1))
+```
+## f.  For this model, compute a t-test by hand for the slope using the standard error formula.
+
+$$
+S_{\hat{\beta_{1}}} = \sqrt{\frac{MSE}{\sum_i(x_i - \bar{x})}}
+$$
+
+## g.  Calculate and interpret a 95% confidence interval for the intercept. The equation for the standard error is given below.
+$$
+S_{\hat{\beta_{0}}} = \sqrt{MSE}\sqrt{1/n + \frac{\bar{x}^2}{\sum_{i}(x_i - \bar{x})^2}}
+$$
+
+## h. Calculate the coefficient of determination for the model by hand. 
+
+$$
+R^2 = \frac{SSR}{SST}
+$$
+
+## i. Calculate the correlation coefficient for the model.
+
+$$
+r = \sqrt{R^2}
+$$
+
+## j.  Carry out a hypothesis test to determine whether the linear correlation for these data is different from 0. 
+
+$$
+t_{calc} = \frac{r*\sqrt{n-2}}{\sqrt{1-r^2}}
+$$

@@ -1,0 +1,74 @@
+---
+title: 'Lab 9: ANOVA'
+author: "Kyle Payne"
+date: "October 21, 2015"
+output: word_document
+---
+
+# 1. 
+
+We wish to compare the mean values for a given variable (treatment) for three populations
+with five replicates per treatment. The sums of squares for treatment and error are given below.
+
+Use this information to write the linear model.
+
+$$
+y_{ij} = 
+$$
+
+# Exercise 2. Testing the assumptions of ANOVA
+
+## a.
+
+Abstract: Average salary paid to teachers and expenditures per pupil are two commonly used measures of the amount of money spent on education. Data on these two measures are provided by state, and states are classified by region of the country. The two measures have slightly skewed distributions, and Alaska is an outlier in both.
+```{r, echo=FALSE}
+# yours might look a little different
+educate <- read.delim("~/Desktop/educate.txt")
+```
+
+Looking at teachers pay as a dependent variable, then create scatter plots, histograms, and perform tests of normality for teachers pay for each region.
+
+```{r}
+library(ggplot2)
+
+g <- ggplot(aes(x=Pay), data=educate) + geom_histogram() 
+g + facet_wrap(~Region)
+
+p <- ggplot(educate, aes(factor(Region), Pay)) + geom_boxplot()
+
+```
+
+
+Conduct a test of normality for each of the subgroups using the shapiro wilks test at the $\alpha=0.05$ level.
+
+```{r}
+library(plyr)
+
+ddply(.data=educate, .(Region), summarize, p_val = shapiro.test(Pay)$p.value)
+```
+Now perform a test of the homogeneity of variance at the $\alpha=0.05$ level.
+
+```{r}
+bartlett.test(Pay~factor(Region), data=educate)
+```
+## b.
+Now, perform an ANOVA of Region with Pay as the response and list the ANOVA table.
+
+
+Based on these results, are any of the assumptions of ANOVA violated?
+
+
+# 2. 
+
+Abstract: People who are concerned about their health may prefer hot dogs that are low in salt and calories. The "Hot dogs" datafile contains data on the sodium and calories contained in each of 54 major hot dog brands. The hot dogs are classified by type: beef, poultry, and meat (mostly pork and beef, but up to 15% poultry meat).
+
+```{r}
+hot_dogs <- read.delim("~/Desktop/hot_dogs.txt")
+```
+
+## a. 
+Test for normality, homogeneity of variance, and produce boxplots and histograms
+
+## b.
+Perform an ANOVA with Sodium as the response and Type as the grouping variable. Output an ANOVA table of your results. 
+

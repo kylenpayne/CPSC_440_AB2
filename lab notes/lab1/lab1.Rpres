@@ -1,0 +1,61 @@
+Basic Descriptive Statistics ---- SAS
+========================================================
+ - proc univariate
+ - proc means
+ 
+proc univariate ---- SAS
+========================================================
+````{r, eval=FALSE, echo=TRUE}
+proc univariate <options> ; 
+  <options>
+run;
+
+proc univariate data=dcn;
+  var ITSN1_N;
+run;
+````
+
+proc means ---- SAS
+============================
+````{r, eval=FALSE, echo=TRUE}
+proc meansa <options> ; 
+  <options>
+run;
+
+proc means data=dcn;
+  var ITSN1_N;
+run;
+````
+
+Basic Descriptive Statistics ---- R
+========================================================
+````{r, eval=TRUE, echo=TRUE}
+summary(data_cortex[2], na.rm=TRUE)
+````
+
+Basic Descriptive Statistics ---- R
+========================================================
+```{r, eval=TRUE, echo=TRUE}
+var(data_cortex[2], na.rm=TRUE)
+```
+
+
+Basic Descriptive Statistics ---- R
+========================================================
+````{r, eval=TRUE, echo=TRUE}
+colMeans(data_cortex[c(2,5)], na.rm=TRUE)
+````
+
+ Basic Descriptive Statistics ---- R
+========================================================
+````{r, eval=TRUE, echo=TRUE}
+sapply(data_cortex[2:5], mean, na.rm=TRUE)
+````
+
+Basic Descriptive Statistics ---- R
+========================================================
+sapply is extremely useful for working with data in R.
+In order to understand sapply better we first need
+to understand the some basic data structures.
+
+

@@ -1,0 +1,57 @@
+---
+title: "Lecture AY6"
+author: "Kyle Payne"
+date: "September 23, 2015"
+output: html_document
+runtime: shiny
+---
+
+
+1. 
+===============
+Sample Size Estimator
+
+$$
+n = \frac{\sigma^2 (Z_{\alpha/2})^2}{E^2}
+$$
+
+```{r echo = FALSE}
+sliderInput("tol",
+             h1("Tolerance"),
+             min=0, max=1000,
+              value=1)
+numericInput("sig",
+             h1("Variance"),
+             value=10, 
+             min=0,
+             max=10000)
+
+numericInput("alpha",
+             h1("Significance Level"),
+             value=0.05, 
+             min=0,
+             max=1)
+```
+
+
+
+```{r, echo=FALSE}
+  renderPlot({
+  
+  n <- ceiling(input$sig*(qnorm(input$alpha/2))^2/(input$tol)^2)
+  
+  E <- input$tol
+  alpha <- seq(0, to=input$alpha, length.out = 100)
+  z <- qnorm(alpha/2)
+  
+  
+  n_2 <- ceiling(input$sig*(z^2)/E^2)
+  
+  tmp_df <- data.frame(z = z, n = n_2)
+  
+  library(ggplot2)
+  
+  ggplot(aes(x=z, y=n), data=tmp_df)+geom_line()
+  
+  })
+```

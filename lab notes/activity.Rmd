@@ -1,0 +1,127 @@
+---
+title: "Lab 3"
+author: "Kyle Payne"
+date: "September 9, 2015"
+output: html_document
+runtime: shiny
+---
+
+
+# Parameters
+A parameter is a numerical characteristic of a population. Think, average overall rate of calls to a call center, or average height in a goat population, or the true variance of evoked potential response in a study. The parameter does not depend upon the sample for its calculation. 
+
+# Statistic
+A statistic is a numerical quantity calculated from a sample. These are sample means 
+
+$$ \bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i $$ 
+
+Sample Variance
+
+$$ S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2 $$
+
+and so on ...
+
+# Binomial Plot
+Choose the parameters
+```{r echo = FALSE}
+sliderInput("bin_param",
+             h1("Binomial Parameter"),
+             min=0, max=1,
+              value=0.5)
+numericInput("sample_size",
+             h1("Sample Size"),
+             value=10, 
+             min=0,
+             max=10000)
+```
+
+
+
+```{r, echo=FALSE}
+  renderPlot({
+    print(input$bin_param)
+    print(input$sample_size)
+
+    p <- input$bin_param
+    n <- input$sample_size
+    s <- 10000
+    rands <- rbinom(s, n, prob=p)
+    print(rands)
+    hist(rands, prob=T)
+    
+    norm_mean <- n*p
+    norm_sd <- sqrt(n*p*(1-p))
+    
+    r_norms <- rnorm(s, mean=norm_mean, sd=norm_sd)
+    lines(density(r_norms))
+  })
+```
+
+# Normal
+```{r echo = FALSE}
+sliderInput("mean",
+             h1("Mean"),
+             min=-50, max=50,
+              value=0)
+numericInput("variance",
+             h1("Variance"),
+             value=1, 
+             min=0,
+             max=10000)
+```
+
+
+
+```{r, echo=FALSE}
+  renderPlot({
+    print(input$bin_param)
+    print(input$sample_size)
+
+    mean <- input$mean
+    n_var <- input$variance
+    s <- 10000
+    rands <- rnorm(s, mean=mean, sd=n_var)
+    plot(density(rands))
+    abline(v=mean, lty=2, lwd=4, col="skyblue")
+    abline(v = mean + sqrt(n_var), lty=2, lwd=4, col="red")
+    abline(v = mean - sqrt(n_var), lty=2, lwd=4, col="red")
+  })
+```
+
+
+
+```{r, echo=FALSE}
+
+numericInput("num_flips",
+             h1("Number of Flips"),
+             value=10, 
+             min=0,
+             max=10000)
+sliderInput("thresh",
+             h1("Probability of Head"),
+             value=0.5,
+             min=0, 
+             max=1)
+```
+
+
+```{r, echo=FALSE}
+library(ggplot2)
+
+renderPlot({
+#Initialze the variables
+  
+sequenceOfCoinTosses <- sample(c(0,1), input$num_flips,
+                               prob=c(1-input$thresh, input$thresh),
+                               replace = TRUE)
+
+cum_sum <- cumsum(sequenceOfCoinTosses)/seq_along(sequenceOfCoinTosses)
+
+df <- data.frame(trials = 1:input$num_flips, relHH = cum_sum)
+
+
+ggplot(aes(x=trials, y=relHH), data=df) + geom_line()
+})
+```
+
+

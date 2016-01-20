@@ -1,0 +1,58 @@
+Data Structures ---- R
+========================================================
+
+
+R's base data structures can be organised by their dimensionality (1d, 2d, or nd) and whether they're homogeneous (all contents must be of the same type) or heterogeneous (the contents can be of different types). This gives rise to the five data types most often used in data analysis: 
+
+|    | Homogeneous   | Heterogeneous |
+|----|---------------|---------------|
+| 1d | Atomic vector | List          |
+| 2d | Matrix        | Data frame    |
+| nd | Array         |               |
+
+- ("Advanced R", Wickham 2014) http://adv-r.had.co.nz/
+
+
+Data Structures ---- R ---- Vectors
+========================================================
+- 1 dimensional data structures 
+- Must all be one type i.e. "homogeneous"
+- Formed by the "c()" operator
+e.g.
+
+````{r, eval=TRUE, echo=TRUE, cache=TRUE}
+data <- c(1,2,3,4,10)
+data
+data <- c("Help", "Me", "I'm", "Not", "Good", "At", "Examples")
+data
+````
+Data Structures ---- R ---- Vectors
+========================================================
+What happens with mixed types?
+```{r, eval=TRUE, echo=TRUE, cache=TRUE}
+data<-c("r", "u", "da", 1)
+data
+```
+
+Data Structures ---- R ---- Lists
+========================================================
+- 1 dimensional data structures 
+- Can be mixed types i.e. "heterogeneous"
+- Formed by the "list()" function
+```{r, eval=TRUE, echo=TRUE}
+data <- list(1,2,3)
+data
+```
+Data Structures ---- R ---- Lists
+========================================================
+- Mixed Types?
+```{r, eval=TRUE, echo=TRUE}
+data <- list("r", "u", "da", 1)
+data
+```
+Data Structures ---- R ---- data.frames
+========================================================
+- What are lists that contain vectors? Data Frames.
+- R structures data files e.g. .csv, .txt, etc... as data frames
+- These come with a bunch of useful functionality
+- You will see these alot.
