@@ -1,0 +1,27 @@
+Package: cspc440
+Type: Package
+Title: R Functions and Data for CPSC 440
+Version: 0.1
+Date: 2016-03-08
+Authors@R: person("Kyle", "Payne", email = "knpayne2@illinois.edu",
+  role = c("aut", "cre"))
+Maintainer: <knpayne2@illinois.edu>
+Description: This is a package of various functions
+    and data for teaching, learning, and doing various aspects of
+    the course CPSC 440 in R. While much of the course is taught
+    in SAS, it's only fair to present a set of utilities and
+    functions for students and instructors that want to use R
+    instead. This will also be a safe place to put cool little
+    R examples that were used in the lab sections so that future
+    TAs can use them for their benefit.
+License: MIT
+LazyData: TRUE
+Imports:
+    dplyr,
+    ggvis,
+    plyr,
+    ggplot2,
+    reshape2,
+    lsmeans,
+    knitr,
+    car
