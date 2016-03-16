@@ -24,4 +24,5 @@ Imports:
     reshape2,
     lsmeans,
     knitr,
-    car
+    car,
+    data.table
