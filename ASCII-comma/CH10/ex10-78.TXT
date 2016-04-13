@@ -1,0 +1,7 @@
+'Group','NumberTumors','Frequency'
+'Control','OneorMore',10
+'LowDose','OneorMore',14
+'HighDose','OneorMore',19
+'Control','None',90
+'LowDose','None',86
+'HighDose','None',81

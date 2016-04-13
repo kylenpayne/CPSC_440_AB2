@@ -1,0 +1,7 @@
+'UnionMembership','Opinion','Frequency'
+'Member','Favor',140
+'NonMember','Favor',70
+'Member','Indifferent',42
+'NonMember','Indifferent',198
+'Member','Opposed',18
+'NonMember','Opposed',132

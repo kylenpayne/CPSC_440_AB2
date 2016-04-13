@@ -1,0 +1,6 @@
+'Nat.Def.',525
+'SS',500
+'Med&Med',500
+'NatDebt',300
+'SocialAid',200
+'Other',475

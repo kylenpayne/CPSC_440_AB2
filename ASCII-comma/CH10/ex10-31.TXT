@@ -1,0 +1,5 @@
+'Season','NumHomicides'
+'Winter',328
+'Spring',372
+'Summer',471
+'Fall',329

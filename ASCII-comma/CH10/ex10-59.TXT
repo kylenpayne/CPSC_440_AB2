@@ -1,0 +1,5 @@
+'Phenotype','Frequency'
+'Tall,cut-leaf',926
+'Dwarf,cut-leaf',293
+'Tall,potato-leaf',288
+'Dwarf,potato-leaf',104

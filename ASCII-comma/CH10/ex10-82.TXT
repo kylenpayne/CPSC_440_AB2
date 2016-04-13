@@ -1,0 +1,7 @@
+'Ethnic Group','NumResponding','Altered Digestive'
+'Anglo-Saxon',55,7
+'German',58,6
+'Latin American',52,34
+'Italian',54,38
+'Spanish',30,20
+'African American',49,31
